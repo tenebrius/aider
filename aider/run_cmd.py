@@ -94,6 +94,8 @@ def run_cmd_pexpect(command, verbose=False, cwd=None):
     :param verbose: If True, print output in real-time.
     :return: A tuple containing (exit_status, output)
     """
+    conda_env = os.environ.get("CONDA_ENV")
+    command = f"conda activate {conda_env}; " + command
     if verbose:
         print("Using run_cmd_pexpect:", command)
 
